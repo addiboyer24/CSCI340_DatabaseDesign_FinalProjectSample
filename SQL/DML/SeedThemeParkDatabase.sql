@@ -23,7 +23,6 @@ VALUES
     ('Splash Mountain', 'Log flume ride based on characters from "Song of the South"', '1989-07-17', 12000000, '678901234', '1989-07-17', 1),
     ('Big Thunder Mountain Railroad', 'Wild west-themed roller coaster through an abandoned mine', '1979-09-02', 9000000, '789012345', '1979-09-02', 1),
     ('The Twilight Zone Tower of Terror', 'Elevator drop ride themed after the TV show "The Twilight Zone"', '1994-07-22', 15000000, '901234567', '1994-07-22', 1),
-    ('it''ss a Small World', 'Boat ride featuring animatronic dolls representing various countries', '1966-05-28', 6000000, '012345678', '1966-05-28', 0),
     ('Expedition Everest', 'Thrilling roller coaster through the Himalayas', '2006-04-07', 18000000, '123456789', '2006-04-07', 1),
     ('Toy Story Mania!', 'Interactive 4D shooting gallery game based on the "Toy Story" films', '2008-05-31', 10000000, '456789012', '2008-05-31', 0),
     ('The Simpsons Ride', 'Simulated roller coaster ride through the world of "The Simpsons"', '2008-05-15', 11000000, '234567890', '2008-05-15', 1);
