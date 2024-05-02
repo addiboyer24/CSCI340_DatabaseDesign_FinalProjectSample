@@ -4,10 +4,7 @@ import App.Domain.AttractionHistory;
 import App.Infrastructure.AttractionHistoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,14 +22,36 @@ public class AttractionHistoryController {
     }
 
     @GetMapping("/")
-    public List<App.Domain.AttractionHistory> Get(){
+    public List<App.Domain.AttractionHistory> get(){
         this.attractionHistoryRepository.setDatabaseConnection(databaseConnection);
         return this.attractionHistoryRepository.get();
     }
 
     @GetMapping("/{id}")
-    public AttractionHistory Get(@PathVariable("id") String id){
+    public List<AttractionHistory> get(@PathVariable("id") String id){
         this.attractionHistoryRepository.setDatabaseConnection(databaseConnection);
-        return this.attractionHistoryRepository.get(id).get(0);
+        return this.attractionHistoryRepository.get(id);
+    }
+
+    @PostMapping("/")
+    public String post(@RequestBody() AttractionHistory historyToSave){
+        this.attractionHistoryRepository.setDatabaseConnection(databaseConnection);
+        this.attractionHistoryRepository.create(historyToSave);
+        return historyToSave.getAttractionName();
+    }
+
+    @PutMapping("/{attractionName}/{historyDate}")
+    public void put(@RequestBody() AttractionHistory historyToUpdate,
+                    @PathVariable("attractionName") String attractionName,
+                    @PathVariable("historyDate") String historyDate){
+        this.attractionHistoryRepository.setDatabaseConnection(databaseConnection);
+        this.attractionHistoryRepository.update(attractionName, historyDate, historyToUpdate);
+    }
+
+    @DeleteMapping("/{attractionName}/{historyDate}")
+    public void delete(@PathVariable("attractionName") String attractionName,
+                       @PathVariable("historyDate") String historyDate){
+        this.attractionHistoryRepository.setDatabaseConnection(databaseConnection);
+        this.attractionHistoryRepository.delete(attractionName, historyDate);
     }
 }
